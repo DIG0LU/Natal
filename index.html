@@ -2,12 +2,14 @@
 <html>
 <head>
     <title>Feliz Natal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             font-family: 'Comic Sans MS', cursive, sans-serif;
             background-image: url('https://t3.ftcdn.net/jpg/06/46/04/28/360_F_646042844_Gf6pi5YWrLYk3lwvIJzF1TzfYwTi8GHf.jpg');
             background-repeat: no-repeat;
-            background-size: 100% 100%;
+            background-size: cover; /* Mantém a proporção da imagem */
+            background-position: center; /* Centraliza a imagem de fundo */
             background-attachment: fixed;
             color: white;
             text-align: center;
@@ -77,6 +79,32 @@
         .botao-voltar:hover {
             background-color: #666;
             transform: scale(1.05);
+        }
+
+        /* Ajustes para dispositivos móveis */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px; /* Reduz o padding em telas menores */
+            }
+
+            h1 {
+                font-size: 36px; /* Reduz o tamanho do título */
+            }
+
+            p {
+                font-size: 18px; /* Reduz o tamanho do texto */
+            }
+
+            button {
+                padding: 10px 20px; /* Botões menores */
+                font-size: 16px; /* Fonte menor nos botões */
+            }
+
+            .botao-voltar {
+                padding: 8px 16px; /* Botão "voltar" menor */
+                font-size: 14px; /* Fonte menor */
+                margin-top: 30px; /* Menos espaço no topo */
+            }
         }
     </style>
     <script>
