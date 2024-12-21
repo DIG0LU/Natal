@@ -1,76 +1,137 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Mensagem de Natal</title>
+    <title>Feliz Natal</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #ffefd5; /* Fundo com tema natalino */
-            color: #333;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-image: url('https://t3.ftcdn.net/jpg/06/46/04/28/360_F_646042844_Gf6pi5YWrLYk3lwvIJzF1TzfYwTi8GHf.jpg');
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background-attachment: fixed;
+            color: white;
             text-align: center;
             padding: 50px;
         }
+
         h1 {
-            color: #d32f2f; /* Vermelho para destaque */
-            font-size: 36px;
+            color: #ffeb3b;
+            font-size: 48px;
             margin-bottom: 20px;
+            text-shadow: 2px 2px 4px #000;
         }
+
         p {
-            font-size: 20px;
+            font-size: 24px;
             margin-bottom: 30px;
+            text-shadow: 1px 1px 3px #000;
         }
+
         button {
-            background-color: #4caf50; /* Verde para o botão */
+            background-color: #4caf50;
             color: white;
             border: none;
             padding: 15px 30px;
-            font-size: 18px;
-            border-radius: 5px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 10px;
             cursor: pointer;
             margin: 10px;
-            transition: background-color 0.3s;
+            box-shadow: 3px 3px 6px #000;
+            transition: transform 0.2s, background-color 0.3s;
         }
+
         button:hover {
-            background-color: #45a049; /* Efeito ao passar o mouse */
+            background-color: #45a049;
+            transform: scale(1.1);
         }
+
         button.nao {
-            background-color: #d32f2f; /* Vermelho para o botão "Não" */
+            background-color: #e53935;
         }
+
         button.nao:hover {
-            background-color: #c62828; /* Efeito ao passar o mouse no "Não" */
+            background-color: #c62828;
         }
+
         .botao-reiniciar {
-            background-color: #007BFF; /* Azul para o botão "Tentar de novo" */
+            background-color: #007BFF;
         }
+
         .botao-reiniciar:hover {
-            background-color: #0056b3; /* Azul escuro ao passar o mouse */
+            background-color: #0056b3;
+        }
+
+        .botao-voltar {
+            background-color: #888;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 50px; /* Adiciona mais espaço acima do botão */
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 2px 2px 4px #000;
+            display: inline-block; /* Alinha o botão */
+        }
+
+        .botao-voltar:hover {
+            background-color: #666;
+            transform: scale(1.05);
         }
     </style>
     <script>
+        function verificarCodigo(codigoCorreto, mensagemSucesso, funcaoExtra = null) {
+            const codigoInserido = prompt("Por favor, insira o código de acesso:");
+            if (codigoInserido === codigoCorreto) {
+                alert(mensagemSucesso);
+                if (funcaoExtra) funcaoExtra();
+            } else {
+                alert("Código incorreto. Tente novamente.");
+            }
+        }
+
+        function escolherMana() {
+            document.body.innerHTML = `
+                <h1>Recebeste primor no natal?</h1>
+                <p>Clique em uma das opções abaixo:</p>
+                <button onclick="respostaSim()">Sim</button>
+                <button class="nao" onclick="respostaNao()">Não</button>
+                <button class="botao-voltar" onclick="voltarInicio()">Voltar para a página inicial</button>
+            `;
+        }
+
         function respostaSim() {
             alert("Que bom que recebeste primor no Natal! :)");
         }
 
         function respostaNao() {
-            // Limpa o conteudo da pagina
             document.body.innerHTML = `
                 <h1>Sua mentirosa</h1>
                 <button class="botao-reiniciar" onclick="tentarDeNovo()">Tentar de novo</button>
+                <button class="botao-voltar" onclick="voltarInicio()">Voltar para a página inicial</button>
             `;
         }
 
         function tentarDeNovo() {
-            // Recarrega a pagina
-            location.reload();
+            escolherMana();
+        }
+
+        function voltarInicio() {
+            document.body.innerHTML = `
+                <h1>Feliz Natal</h1>
+                <p>Quem está a escolher?</p>
+                <button onclick="verificarCodigo('1603', 'Olá, mãe! Boas Festas!')">Mãe</button>
+                <button onclick="verificarCodigo('1306', 'Olá, pai! Boas Festas!')">Pai</button>
+                <button onclick="verificarCodigo('2306', 'Bem-vinda, mana!', escolherMana)">Mana</button>
+            `;
         }
     </script>
 </head>
 <body>
-    <h1>Recebeste primor no natal?</h1>
-    <p>Clique em uma das opcoes abaixo:</p>
-    <button onclick="respostaSim()">Sim</button>
-    <button class="nao" onclick="respostaNao()">Nao</button>
+    <h1>Feliz Natal</h1>
+    <p>Quem está a escolher?</p>
+    <button onclick="verificarCodigo('1603', 'Olá, mãe! Boas Festas!')">Mãe</button>
+    <button onclick="verificarCodigo('1306', 'Olá, pai! Boas Festas!')">Pai</button>
+    <button onclick="verificarCodigo('2306', 'Bem-vinda, mana!', escolherMana)">Mana</button>
 </body>
 </html>
-
-
