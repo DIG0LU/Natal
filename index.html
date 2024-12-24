@@ -1,46 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-    <title>Feliz Natal</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Natal</title>
     <style>
         body {
             font-family: 'Comic Sans MS', cursive, sans-serif;
             background-image: url('https://t3.ftcdn.net/jpg/06/46/04/28/360_F_646042844_Gf6pi5YWrLYk3lwvIJzF1TzfYwTi8GHf.jpg');
             background-repeat: no-repeat;
-            background-size: cover; /* Mantém a proporção da imagem */
-            background-position: center; /* Centraliza a imagem de fundo */
+            background-size: cover;
+            background-position: center;
             background-attachment: fixed;
             color: white;
             text-align: center;
             padding: 50px;
+            text-shadow: 4px 4px 8px #000;
         }
 
         h1 {
             color: #ffeb3b;
-            font-size: 48px;
+            font-size: 56px;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px #000;
+            text-shadow: 4px 4px 8px #000;
         }
 
         p {
-            font-size: 24px;
+            font-size: 32px;
             margin-bottom: 30px;
-            text-shadow: 1px 1px 3px #000;
+            text-shadow: 2px 2px 5px #000;
         }
 
         button {
             background-color: #4caf50;
             color: white;
             border: none;
-            padding: 15px 30px;
-            font-size: 20px;
+            padding: 20px 40px;
+            font-size: 24px;
             font-weight: bold;
             border-radius: 10px;
             cursor: pointer;
-            margin: 10px;
+            margin: 15px;
             box-shadow: 3px 3px 6px #000;
             transition: transform 0.2s, background-color 0.3s;
+            text-shadow: 2px 2px 4px #000;
         }
 
         button:hover {
@@ -48,32 +51,17 @@
             transform: scale(1.1);
         }
 
-        button.nao {
-            background-color: #e53935;
-        }
-
-        button.nao:hover {
-            background-color: #c62828;
-        }
-
-        .botao-reiniciar {
-            background-color: #007BFF;
-        }
-
-        .botao-reiniciar:hover {
-            background-color: #0056b3;
-        }
-
         .botao-voltar {
             background-color: #888;
             color: white;
-            padding: 10px 20px;
-            font-size: 16px;
-            margin-top: 50px; /* Adiciona mais espaço acima do botão */
+            padding: 15px 30px;
+            font-size: 20px;
+            margin-top: 60px;
             border-radius: 5px;
             cursor: pointer;
             box-shadow: 2px 2px 4px #000;
-            display: inline-block; /* Alinha o botão */
+            display: inline-block;
+            text-shadow: 2px 2px 4px #000;
         }
 
         .botao-voltar:hover {
@@ -81,58 +69,149 @@
             transform: scale(1.05);
         }
 
-        /* Ajustes para dispositivos móveis */
+        img {
+            max-width: 90%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+
+        #pai img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
         @media (max-width: 768px) {
             body {
-                padding: 20px; /* Reduz o padding em telas menores */
+                padding: 20px;
             }
 
             h1 {
-                font-size: 36px; /* Reduz o tamanho do título */
+                font-size: 40px;
             }
 
             p {
-                font-size: 18px; /* Reduz o tamanho do texto */
+                font-size: 28px;
             }
 
             button {
-                padding: 10px 20px; /* Botões menores */
-                font-size: 16px; /* Fonte menor nos botões */
+                padding: 15px 30px;
+                font-size: 20px;
             }
 
             .botao-voltar {
-                padding: 8px 16px; /* Botão "voltar" menor */
-                font-size: 14px; /* Fonte menor */
-                margin-top: 30px; /* Menos espaço no topo */
+                padding: 10px 20px;
+                font-size: 18px;
+                margin-top: 40px;
             }
         }
+
+        .sim {
+            background-color: green;
+            color: white;
+            text-shadow: 2px 2px 4px #000;
+        }
+
+        .sim:hover {
+            background-color: darkgreen;
+        }
+
+        .nao {
+            background-color: red;
+            color: white;
+            text-shadow: 2px 2px 4px #000;
+        }
+
+        .nao:hover {
+            background-color: darkred;
+        }
+
     </style>
     <script>
         function verificarCodigo(codigoCorreto, mensagemSucesso, funcaoExtra = null) {
             const codigoInserido = prompt("Por favor, insira o código de acesso:");
             if (codigoInserido === codigoCorreto) {
-                alert(mensagemSucesso);
                 if (funcaoExtra) funcaoExtra();
             } else {
                 alert("Código incorreto. Tente novamente.");
             }
         }
 
+        function mostrarMae() {
+            document.body.innerHTML = `
+                <h1>Olá, mãe! Boas Festas!</h1>
+                <p>O Pai Natal não quis receber o meu dinheiro...</p>
+                <p>Então a prenda está atrasada.</p>
+                <p>Mas podes ver qual é!!!</p>
+                <button onclick="mostrarPrenda()">Mostrar a prenda</button>
+                <button class="botao-voltar" onclick="voltarInicio()">Voltar para a página inicial</button>
+            `;
+        }
+
+        function mostrarPrenda() {
+            document.body.innerHTML = `
+                <h1>Aqui está a tua prenda!</h1>
+                <img src="https://d9pl0lig74xnv.cloudfront.net/catalog/product/cache/437893f376d51412f8d22555473d20dc/1/7/1788-01_2.jpg" alt="Prenda da Mãe">
+                <button class="botao-voltar" onclick="voltarInicio()">Voltar para a página inicial</button>
+            `;
+        }
+
+        function mostrarPai() {
+            document.body.innerHTML = `
+                <h1>Sabes quem são?</h1>
+                <div id="pai">
+                    <img src="https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/1175E/production/_106481517_gettyimages-172387616.jpg.webp" alt="Imagem 1" class="imagem">
+                    <img src="https://www.suinostopgen.com.br/wp-content/uploads/2022/05/Javali-1024x1024.jpg" class="imagem">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Sus_scrofa_domestica_1_%28Piotr_Kuczynski%29.jpg/220px-Sus_scrofa_domestica_1_%28Piotr_Kuczynski%29.jpg" class="imagem">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQur9QjSB1g3MyNkYw6KTVlX_YX7NDsQnNWgg&s" class="imagem">
+                </div>
+                <button class="sim" onclick="respostaSimP()">Sim</button>
+                <button class="nao" onclick="respostaNaoP()">Não</button>
+                <button class="botao-voltar" onclick="voltarInicio()">Voltar para a página inicial</button>
+            `;
+        }
+
+        function respostaSimP() {
+            // Nova página com a resposta
+            document.body.innerHTML = `
+                <h1>BOA! Eu sabia que conhecias bem o governo</h1>
+                <button class="botao-voltar" onclick="voltarInicio()">Voltar para a página inicial</button>
+            `;
+        }
+
+        function respostaNaoP() {
+            // Nova página com a resposta
+            document.body.innerHTML = `
+                <h1>Tristeza franciscana...</h1>
+                <button class="botao-voltar" onclick="voltarInicio()">Voltar para a página inicial</button>
+            `;
+        }
+
         function escolherMana() {
             document.body.innerHTML = `
                 <h1>Recebeste primor no natal?</h1>
                 <p>Clique em uma das opções abaixo:</p>
-                <button onclick="respostaSim()">Sim</button>
+                <button class="sim" onclick="respostaSim()">Sim</button>
                 <button class="nao" onclick="respostaNao()">Não</button>
                 <button class="botao-voltar" onclick="voltarInicio()">Voltar para a página inicial</button>
             `;
         }
 
         function respostaSim() {
-            alert("Que bom que recebeste primor no Natal! :)");
+            // Nova página com a resposta
+            document.body.innerHTML = `
+                <h1>Que bom que recebeste primor no Natal! :)</h1>
+                <button class="botao-voltar" onclick="voltarInicio()">Voltar para a página inicial</button>
+            `;
         }
 
         function respostaNao() {
+            // Nova página com a resposta
             document.body.innerHTML = `
                 <h1>Sua mentirosa</h1>
                 <button class="botao-reiniciar" onclick="tentarDeNovo()">Tentar de novo</button>
@@ -148,8 +227,8 @@
             document.body.innerHTML = `
                 <h1>Feliz Natal</h1>
                 <p>Quem está a escolher?</p>
-                <button onclick="verificarCodigo('1603', 'Olá, mãe! Boas Festas!')">Mãe</button>
-                <button onclick="verificarCodigo('1306', 'Olá, pai! Boas Festas!')">Pai</button>
+                <button onclick="verificarCodigo('1603', '', mostrarMae)">Mãe</button>
+                <button onclick="verificarCodigo('1306', '', mostrarPai)">Pai</button>
                 <button onclick="verificarCodigo('2306', 'Bem-vinda, mana!', escolherMana)">Mana</button>
             `;
         }
@@ -158,8 +237,8 @@
 <body>
     <h1>Feliz Natal</h1>
     <p>Quem está a escolher?</p>
-    <button onclick="verificarCodigo('1603', 'Olá, mãe! Boas Festas!')">Mãe</button>
-    <button onclick="verificarCodigo('1306', 'Olá, pai! Boas Festas!')">Pai</button>
+    <button onclick="verificarCodigo('1603', '', mostrarMae)">Mãe</button>
+    <button onclick="verificarCodigo('1306', '', mostrarPai)">Pai</button>
     <button onclick="verificarCodigo('2306', 'Bem-vinda, mana!', escolherMana)">Mana</button>
 </body>
 </html>
